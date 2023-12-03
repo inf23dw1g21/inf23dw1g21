@@ -1,7 +1,8 @@
+DROP DATABASE IF EXISTS webhoster;
 CREATE DATABASE webhoster;
 USE webhoster;
 -- Criar a tabela planos
-CREATE TABLE planos (
+CREATE TABLE plano (
   id INT PRIMARY KEY AUTO_INCREMENT,
   tipo_de_plano VARCHAR(20) NOT NULL,
   periodicidade VARCHAR(20) NOT NULL,
@@ -14,7 +15,7 @@ CREATE TABLE planos (
 );
 
 -- Inserir dados na tabela planos
-INSERT INTO planos VALUES
+INSERT INTO plano VALUES
 (1, 'Básico', 'Mensal', 9.99, '10 GB', 1, 1, 'Ilimitada', 'Nenhuma'),
 (2, 'Básico', 'Anual', 99.99, '10 GB', 1, 1, 'Ilimitada', '1 mês grátis'),
 (3, 'Intermédio', 'Mensal', 19.99, '50 GB', 5, 3, 'Ilimitada', 'Nenhuma'),
@@ -27,7 +28,7 @@ INSERT INTO planos VALUES
 (10, 'Ultra','Anual', 499.99, '500 GB', 50, 20, 'Ilimitada', '5 meses grátis');
 
 -- Criar a tabela clientes
-CREATE TABLE clientes (
+CREATE TABLE cliente (
   id INT PRIMARY KEY AUTO_INCREMENT,
   nome VARCHAR(50) NOT NULL,
   tipo_de_conta VARCHAR(20) NOT NULL,
@@ -37,11 +38,11 @@ CREATE TABLE clientes (
   plano INT NOT NULL,
   periodicidade_de_pagamento VARCHAR(20) NOT NULL,
   data_ultimo_pagamento DATE NOT NULL,
-  FOREIGN KEY (plano) REFERENCES planos(id)
+  FOREIGN KEY (plano) REFERENCES plano(id)
 );
 
 -- Inserir dados na tabela clientes
-INSERT INTO clientes VALUES
+INSERT INTO cliente VALUES
 (1, 'João Silva', 'Empresarial', '123456789', 'joao@empresa.com', '912345678', 1, 'Mensal', '2023-11-30'),
 (2, 'Maria Santos', 'Pessoal', '234567890', 'maria@santos.com', '923456789', 2, 'Anual', '2023-12-31'),
 (3, 'Pedro Costa', 'Empresarial', '345678901', 'pedro@costa.com', '934567890', 3, 'Mensal', '2023-11-30'),
@@ -76,7 +77,7 @@ INSERT INTO clientes VALUES
 
 
 -- Criar a tabela dominios
-CREATE TABLE dominios (
+CREATE TABLE dominio (
   id INT PRIMARY KEY AUTO_INCREMENT,
   nome VARCHAR(50) NOT NULL,
   codigo_TLD VARCHAR(10) NOT NULL,
@@ -84,11 +85,11 @@ CREATE TABLE dominios (
   data_de_inicio DATE NOT NULL,
   data_de_fim DATE,
   cliente INT NOT NULL,
-  FOREIGN KEY (cliente) REFERENCES clientes(id)
+  FOREIGN KEY (cliente) REFERENCES cliente(id)
 );
 
 -- Inserir dados na tabela dominios
-INSERT INTO dominios VALUES
+INSERT INTO dominio VALUES
 (1, 'empresa', '.com', 'Ativo', '2023-01-01', NULL, 1),
 (2, 'santos', '.com', 'Ativo', '2023-01-01', '2024-01-01', 2),
 (3, 'costa', '.com', 'Ativo', '2023-01-01', NULL, 3),
@@ -121,14 +122,14 @@ INSERT INTO dominios VALUES
 (30, 'monteiro', '.net', 'Ativo', '2023-01-01', '2024-01-01', 30);
 
 -- Criar a tabela pagamentos
-CREATE TABLE pagamentos (
+CREATE TABLE pagamento (
   id INT PRIMARY KEY AUTO_INCREMENT,
   timestamp DATETIME NOT NULL,
   valor DECIMAL(10,2) NOT NULL,
   metodo_de_pagamento VARCHAR(20) NOT NULL,
   numero_de_transacao VARCHAR(20) NOT NULL,
   cliente INT NOT NULL,
-  FOREIGN KEY (cliente) REFERENCES clientes(id)
+  FOREIGN KEY (cliente) REFERENCES cliente(id)
 );
 
 -- Inserir dados na tabela pagamentos
