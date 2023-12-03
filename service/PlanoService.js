@@ -1,5 +1,5 @@
 'use strict';
-
+var mysql = require("../utils/db.js")
 
 /**
  *
