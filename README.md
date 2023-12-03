@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="[http://some_place.com/image.png](https://github.com/inf23dw1g21/inf23dw1g21/assets/131387962/df2948a3-4228-4418-a3a0-23d574779ffb)" />
+  <img src="(http://some_place.com/image.png](https://github.com/inf23dw1g21/inf23dw1g21/assets/131387962/df2948a3-4228-4418-a3a0-23d574779ffb)" />
 </p>
 
 # Webhoster - domain hosting
