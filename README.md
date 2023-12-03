@@ -16,8 +16,6 @@ These are the technologies we have used in this assignment.
 
 [JSON](https://www.w3schools.com/js/js_json_intro.asp)
 
-[MySQLWorkbench](https://www.mysql.com/products/workbench/)
-
 [Docker](https://www.docker.com/get-started/)
 
 [NodeJS](https://nodejs.org/en/about)
