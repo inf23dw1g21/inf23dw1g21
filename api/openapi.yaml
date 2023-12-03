@@ -1,0 +1,578 @@
+openapi: 3.0.0
+info:
+  title: WebHoster
+  description: Api de armazenamento de dominios completo ( M2 Desenvolvimento WEB
+    I)
+  termsOfService: https://github.com/inf23dw1g21/inf23dw1g21
+  contact:
+    name: WebHoster
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+- url: http://localhost:8080
+  description: My localhost
+  variables:
+    basePath:
+      default: /
+paths:
+  /clientes:
+    get:
+      tags:
+      - cliente
+      operationId: clienteGET
+      responses:
+        "200":
+          description: Retorna uma lista de clientes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/cliente'
+                x-content-type: application/json
+      x-swagger-router-controller: cliente
+    post:
+      tags:
+      - cliente
+      operationId: clientePOST
+      requestBody:
+        $ref: '#/components/requestBodies/cliente'
+      responses:
+        "200":
+          description: Cliente criado com sucesso
+      x-swagger-router-controller: cliente
+  /cliente/{id}:
+    get:
+      tags:
+      - cliente
+      operationId: cliente_idGET
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: um cliente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cliente'
+      x-swagger-router-controller: cliente
+    put:
+      tags:
+      - cliente
+      operationId: cliente_idPUT
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        $ref: '#/components/requestBodies/cliente'
+      responses:
+        "200":
+          description: Cliente atualizado com sucesso!
+      x-swagger-router-controller: cliente
+    delete:
+      tags:
+      - cliente
+      operationId: cliente_idDELETE
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Cliente deletado com sucesso!
+      x-swagger-router-controller: User
+  /cliente/{id}/plano:
+    get:
+      tags:
+      - plano
+      operationId: cliente_idplanoGET
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Ver o plano do cliente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/plano'
+                x-content-type: application/json
+      x-swagger-router-controller: plano
+  /planos:
+    get:
+      tags:
+      - plano
+      operationId: planoGET
+      responses:
+        "200":
+          description: Retorna uma lista com todos os planos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/plano'
+                x-content-type: application/json
+      x-swagger-router-controller: plano
+    post:
+      tags:
+      - plano
+      operationId: planoPOST
+      requestBody:
+        $ref: '#/components/requestBodies/plano'
+      responses:
+        "200":
+          description: Plano criado com sucesso
+      x-swagger-router-controller: plano
+  /plano/{id}:
+    get:
+      tags:
+      - plano
+      operationId: plano_idGET
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Retorna um  plano especifico com o id requisitado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/plano'
+      x-swagger-router-controller: plano
+    put:
+      tags:
+      - plano
+      operationId: plano_idPUT
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        $ref: '#/components/requestBodies/plano'
+      responses:
+        "200":
+          description: Plano atualizado com sucesso
+      x-swagger-router-controller: plano
+    delete:
+      tags:
+      - plano
+      operationId: plano_idDELETE
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Plano apagado com sucesso
+      x-swagger-router-controller: plano
+  /dominios:
+    get:
+      tags:
+      - dominio
+      operationId: dominioGET
+      responses:
+        "200":
+          description: Uma lista de dominios
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/dominio'
+                x-content-type: application/json
+      x-swagger-router-controller: dominio
+    post:
+      tags:
+      - dominio
+      operationId: dominioPOST
+      requestBody:
+        $ref: '#/components/requestBodies/dominio'
+      responses:
+        "200":
+          description: Dominio criado com sucesso
+      x-swagger-router-controller: dominio
+  /dominio/{id}:
+    get:
+      tags:
+      - dominio
+      operationId: dominio_idGET
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Retorna um dominio especifico
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dominio'
+      x-swagger-router-controller: dominio
+    put:
+      tags:
+      - dominio
+      operationId: dominio_idPUT
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        $ref: '#/components/requestBodies/dominio'
+      responses:
+        "200":
+          description: Dominio criado com sucesso
+      x-swagger-router-controller: dominio
+    delete:
+      tags:
+      - dominio
+      operationId: dominio_idDELETE
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Dominio Apagado com sucesso
+      x-swagger-router-controller: dominio
+  /dominio/{id}/cliente:
+    get:
+      tags:
+      - plano
+      operationId: dominio_idclienteGET
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Ver os dominios do cliente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/dominio'
+                x-content-type: application/json
+      x-swagger-router-controller: dominio
+  /pagamentos:
+    get:
+      tags:
+      - pagamento
+      operationId: pagamentoGET
+      responses:
+        "200":
+          description: Uma lista de pagamentos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/pagamento'
+                x-content-type: application/json
+      x-swagger-router-controller: pagamento
+    post:
+      tags:
+      - pagamento
+      operationId: pagamentoPOST
+      requestBody:
+        $ref: '#/components/requestBodies/pagamento'
+      responses:
+        "200":
+          description: Pagamento criado com sucesso
+      x-swagger-router-controller: pagamento
+  /pagamento/{id}:
+    get:
+      tags:
+      - pagamento
+      operationId: pagamento_idGET
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Retorna um pagamento especifico
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pagamento'
+      x-swagger-router-controller: pagamento
+    put:
+      tags:
+      - pagamento
+      operationId: pagamento_idPUT
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        $ref: '#/components/requestBodies/pagamento'
+      responses:
+        "200":
+          description: Pagamento criado com sucesso
+      x-swagger-router-controller: pagamento
+    delete:
+      tags:
+      - pagamento
+      operationId: pagamento_idDELETE
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Pagamento Apagado com sucesso
+      x-swagger-router-controller: pagamento
+  /pagamento/{id}/cliente:
+    get:
+      tags:
+      - pagamento
+      operationId: pagamento_idclienteGET
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Ver os pagamentos do cliente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/pagamento'
+                x-content-type: application/json
+      x-swagger-router-controller: pagamento
+components:
+  schemas:
+    plano:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        tipo_de_plano:
+          type: string
+        periodicidade:
+          type: string
+        preco:
+          type: integer
+          format: double
+        armazenamento:
+          type: string
+        numero_de_contas_de_email:
+          type: integer
+          format: int64
+        numero_de_dominios:
+          type: integer
+          format: int64
+        largura_de_banda:
+          type: string
+        fidelização:
+          type: string
+      example:
+        id: 0
+        tipo_de_plano: Básico
+        periodicidade: Mensal
+        preco: 9.99
+        armazenamento: 10GB
+        numero_de_contas_email: 1
+        numero_de_dominios: 1
+        largura_de_banda: 100Gb/s
+        fidelizacao: Nenhuma
+    cliente:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nome:
+          type: string
+        tipo_de_conta:
+          type: string
+        numero_fiscal:
+          type: string
+        email:
+          type: string
+        contacto:
+          type: string
+        plano:
+          type: integer
+          format: int64
+        periodicidade_de_pagamento:
+          type: string
+        data_ultimo_pagamento:
+          type: string
+      example:
+        id: 0
+        nome: João Silva
+        tipo_de_conta: Empresarial
+        numero_fiscal: PT000000001
+        email: exemplo@umaia.pt
+        contacto: 956656564
+        plano: 1
+        periodicidade_de_pagamento: Mensal
+        data_ultimo_pagamento: 2023-11-30
+    dominio:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nome:
+          type: string
+        codigo_TLD:
+          type: string
+        estado:
+          type: boolean
+        data_de_inicio:
+          type: string
+        data_fim:
+          type: string
+        cliente:
+          type: integer
+          format: int64
+      example:
+        id: 0
+        nome: Patatas
+        codigo_TLD: .net
+        estado: Ativo
+        data_de_inicio: 2023-01-01
+        data_de_fim: 2024-01-01
+        cliente: 1
+    pagamento:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        valor:
+          type: integer
+          format: double
+        metodo_de_pagamento:
+          type: string
+        numero_de_transacao:
+          type: string
+        cliente:
+          type: integer
+          format: int64
+      example:
+        id: 0
+        valor: 9.99
+        metodo_de_pagamento: cartao de credito
+        numero_de_transacao: CGD54848488
+        cliente: 1
+  requestBodies:
+    cliente:
+      description: "Cliente a ser adicionado , editado ou removido do negocio."
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/cliente'
+    plano:
+      description: "Plano que precisa ser adicionado , editado ou removido do negocio"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/plano'
+    dominio:
+      description: "Dominio que precisa ser adicionado , editado ou removido do negocio"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/dominio'
+    pagamento:
+      description: "Pagamento que precisa ser adicionado , editado ou removido do\
+        \ negocio"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/pagamento'
