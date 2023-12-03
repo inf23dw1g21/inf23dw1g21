@@ -1,4 +1,4 @@
-[](https://ibb.co/9w89wWY)
+
 
 
 # Webhoster - domain hosting
@@ -8,7 +8,7 @@ Repository to host the project developed for 'Desenvolvimento Web I', a second y
 The project involves on creating a database for a website for domain hosting.
 
 # Technologies and Applications
-This is the technologies we have used in this assignment.
+These are the technologies we have used in this assignment.
 
 [API REST](https://www.ibm.com/topics/rest-apis#:~:text=the%20next%20step-,What%20is%20a%20REST%20API%3F,representational%20state%20transfer%20architectural%20style.)
 
