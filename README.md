@@ -13,7 +13,7 @@ These are the technologies we have used in this assignment.
 
 [API REST](https://www.ibm.com/topics/rest-apis#:~:text=the%20next%20step-,What%20is%20a%20REST%20API%3F,representational%20state%20transfer%20architectural%20style.)
 
-[MySQL](https://www.w3schools.com/sql/)
+[MySQL](https://www.mysql.com/)
 
 [JSON](https://www.w3schools.com/js/js_json_intro.asp)
 
