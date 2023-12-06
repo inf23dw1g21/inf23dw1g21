@@ -7,35 +7,17 @@ var mysql = require("../utils/db.js")
  **/
 exports.clienteGET = function() {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "id" : 0,
-  "nome" : "João Silva",
-  "tipo_de_conta" : "Empresarial",
-  "numero_fiscal" : "PT000000001",
-  "email" : "exemplo@umaia.pt",
-  "contacto" : 956656564,
-  "plano" : 1,
-  "periodicidade_de_pagamento" : "Mensal",
-  "data_ultimo_pagamento" : "2023-11-30"
-}, {
-  "id" : 0,
-  "nome" : "João Silva",
-  "tipo_de_conta" : "Empresarial",
-  "numero_fiscal" : "PT000000001",
-  "email" : "exemplo@umaia.pt",
-  "contacto" : 956656564,
-  "plano" : 1,
-  "periodicidade_de_pagamento" : "Mensal",
-  "data_ultimo_pagamento" : "2023-11-30"
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
-}
+    mysql.query("SELECT * FROM cliente", function (err, res) {
+      if (err) {
+        console.log(err);
+        reject (err);
+      }
+      else {
+        console.log(res);
+        resolve(res);
+      }
+    });
+  })};
 
 
 /**
@@ -46,6 +28,15 @@ exports.clienteGET = function() {
 exports.clientePOST = function(body) {
   return new Promise(function(resolve, reject) {
     resolve();
+    mysql.query("INSERT INTO cliente (id, nome, tipo_de_conta, numero_fiscal, email, contacto, plano, periodicidade_de_pagamento, data_ultimo_pagamento) Values(?,?,?,?,?,?,?,?,?)", [body.id, body.nome, body.tipo_de_conta, body.numero_fiscal, body.email, body.contacto, body.plano, body.periodicidade_de_pagamento, body.data_ultimo_pagamento], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject (err);
+      } else {
+        console.log(res.insertId);
+        resolve (res.insertId);
+      }
+    });
   });
 }
 
@@ -58,9 +49,19 @@ exports.clientePOST = function(body) {
 exports.cliente_idDELETE = function(id) {
   return new Promise(function(resolve, reject) {
     resolve();
+    mysql.query("DELETE FROM cliente WHERE id = ?", [id], function (err, res) {
+      if (err || !res.affectedRows) {
+        console.log(err); 
+        console.log (res);
+        reject();
+      }
+      else {
+        console.log (res);
+        resolve ({"deleted": id});
+      }
+    });
   });
 }
-
 
 /**
  *
@@ -69,23 +70,16 @@ exports.cliente_idDELETE = function(id) {
  **/
 exports.cliente_idGET = function(id) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "id" : 0,
-  "nome" : "João Silva",
-  "tipo_de_conta" : "Empresarial",
-  "numero_fiscal" : "PT000000001",
-  "email" : "exemplo@umaia.pt",
-  "contacto" : 956656564,
-  "plano" : 1,
-  "periodicidade_de_pagamento" : "Mensal",
-  "data_ultimo_pagamento" : "2023-11-30"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    mysql.query("SELECT * FROM cliente WHERE id = ?", [id], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject (err);
+      }
+      else {
+        console.log(res);
+        resolve(res[0]);
+      }
+    });
   });
 }
 
@@ -99,6 +93,15 @@ exports.cliente_idGET = function(id) {
 exports.cliente_idPUT = function(body,id) {
   return new Promise(function(resolve, reject) {
     resolve();
+    mysql.query("UPDATE cliente set id = ?, nome = ?, tipo_de_conta = ?, numero_fiscal = ?, email = ?, contacto = ?, plano = ?, periodicidade_de_pagamento = ?, data_ultimo_pagamento = ?   WHERE id = ?", [body.id, body.nome, body.tipo_de_conta, body.numero_fiscal, body.email, body.contacto, body.plano, body.periodicidade_de_pagamento, body.data_ultimo_pagamento], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject (err);
+      }
+      else {
+        console.log(res);
+        resolve(id);
+      }
+    });
   });
 }
-
