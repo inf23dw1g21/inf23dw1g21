@@ -8,104 +8,34 @@ var mysql = require("../utils/db.js")
  **/
 exports.cliente_idplanoGET = function(id) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "id" : 0,
-  "tipo_de_plano" : "Básico",
-  "periodicidade" : "Mensal",
-  "preco" : 9.99,
-  "armazenamento" : "10GB",
-  "numero_de_contas_email" : 1,
-  "numero_de_dominios" : 1,
-  "largura_de_banda" : "100Gb/s",
-  "fidelizacao" : "Nenhuma"
-}, {
-  "id" : 0,
-  "tipo_de_plano" : "Básico",
-  "periodicidade" : "Mensal",
-  "preco" : 9.99,
-  "armazenamento" : "10GB",
-  "numero_de_contas_email" : 1,
-  "numero_de_dominios" : 1,
-  "largura_de_banda" : "100Gb/s",
-  "fidelizacao" : "Nenhuma"
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    mysql.query("SELECT * FROM plano where cliente=?",[id], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject (err);
+      }
+      else {
+        console.log(res);
+        resolve(res);
+      }
+    });
   });
 }
-
-
-/**
- *
- * id Long 
- * returns List
- **/
-exports.dominio_idclienteGET = function(id) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "id" : 0,
-  "nome" : "Patatas",
-  "codigo_TLD" : ".net",
-  "estado" : "Ativo",
-  "data_de_inicio" : "2023-01-01",
-  "data_de_fim" : "2024-01-01",
-  "cliente" : 1
-}, {
-  "id" : 0,
-  "nome" : "Patatas",
-  "codigo_TLD" : ".net",
-  "estado" : "Ativo",
-  "data_de_inicio" : "2023-01-01",
-  "data_de_fim" : "2024-01-01",
-  "cliente" : 1
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
-}
-
-
 /**
  *
  * returns List
  **/
 exports.planoGET = function() {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "id" : 0,
-  "tipo_de_plano" : "Básico",
-  "periodicidade" : "Mensal",
-  "preco" : 9.99,
-  "armazenamento" : "10GB",
-  "numero_de_contas_email" : 1,
-  "numero_de_dominios" : 1,
-  "largura_de_banda" : "100Gb/s",
-  "fidelizacao" : "Nenhuma"
-}, {
-  "id" : 0,
-  "tipo_de_plano" : "Básico",
-  "periodicidade" : "Mensal",
-  "preco" : 9.99,
-  "armazenamento" : "10GB",
-  "numero_de_contas_email" : 1,
-  "numero_de_dominios" : 1,
-  "largura_de_banda" : "100Gb/s",
-  "fidelizacao" : "Nenhuma"
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    mysql.query("SELECT * FROM plano", function (err, res) {
+      if (err) {
+        console.log(err);
+        reject (err);
+      }
+      else {
+        console.log(res);
+        resolve(res);
+      }
+    });
   });
 }
 
@@ -117,7 +47,16 @@ exports.planoGET = function() {
  **/
 exports.planoPOST = function(body) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    console.log(body);
+    mysql.query("INSERT INTO plano (tipo_de_plano, periodicidade, preco, armazenamento, numero_de_contas_email, numero_de_dominios, largura_de_banda, fidelizacao ) Values(?,?,?,?,?,?,?,?)", [body.tipo_de_plano, body.periodicidade, body.preco, body.armazenamento, body.numero_de_contas_email, body.numero_de_dominios, body.largura_de_banda, body.fidelizacao], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject (err);
+      } else {
+        console.log(res.insertId);
+        resolve (res.insertId);
+      }
+    });
   });
 }
 
@@ -129,7 +68,17 @@ exports.planoPOST = function(body) {
  **/
 exports.plano_idDELETE = function(id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    mysql.query("DELETE FROM plano WHERE id = ?", [id], function (err, res) {
+      if (err || !res.affectedRows) {
+        console.log(err); 
+        console.log (res);
+        reject();
+      }
+      else {
+        console.log (res);
+        resolve ({"deleted": id});
+      }
+    });
   });
 }
 
@@ -141,23 +90,16 @@ exports.plano_idDELETE = function(id) {
  **/
 exports.plano_idGET = function(id) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "id" : 0,
-  "tipo_de_plano" : "Básico",
-  "periodicidade" : "Mensal",
-  "preco" : 9.99,
-  "armazenamento" : "10GB",
-  "numero_de_contas_email" : 1,
-  "numero_de_dominios" : 1,
-  "largura_de_banda" : "100Gb/s",
-  "fidelizacao" : "Nenhuma"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    mysql.query("SELECT * FROM plano WHERE id = ?", [id], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject (err);
+      }
+      else {
+        console.log(res);
+        resolve(res[0]);
+      }
+    });
   });
 }
 
@@ -170,7 +112,17 @@ exports.plano_idGET = function(id) {
  **/
 exports.plano_idPUT = function(body,id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    console.log(body);
+    mysql.query("UPDATE plano settipo_de_plano = ?, periodicidade = ?, preco = ?, armazenamento = ?, numero_de_contas_email = ?, numero_de_dominios = ?, largura_de_banda = ?, fidelizacao = ?", [body.tipo_de_plano, body.periodicidade, body.preco, body.armazenamento, body.numero_de_contas_email, body.numero_de_dominios, body.largura_de_banda, body.fidelizacao, id], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject (err);
+      }
+      else {
+        console.log(res);
+        resolve(id);
+      }
+    });
   });
 }
 
