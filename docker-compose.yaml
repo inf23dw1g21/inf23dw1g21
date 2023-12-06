@@ -14,7 +14,7 @@ services:
       MYSQL_DATABASE: webhoster
       MYSQL_PASSWORD: secret
   nodejs-server:
-    container_name: app
+    container_name: nodeApp
     build:
       context: .
       dockerfile: Dockerfile

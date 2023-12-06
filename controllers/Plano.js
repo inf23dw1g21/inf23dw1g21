@@ -1,10 +1,10 @@
 'use strict';
 
 var utils = require('../utils/writer.js');
-var Plano = require('../service/PlanoService');
+var PlanoS = require('../service/PlanoService');
 
 module.exports.cliente_idplanoGET = function cliente_idplanoGET (req, res, next, id) {
-  Plano.cliente_idplanoGET(id)
+  PlanoS.cliente_idplanoGET(id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -13,12 +13,8 @@ module.exports.cliente_idplanoGET = function cliente_idplanoGET (req, res, next,
     });
 };
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 7ffef90c3acfcba6dade763f6b3a3d1b2df55afb
 module.exports.planoGET = function planoGET (req, res, next) {
-  Plano.planoGET()
+  PlanoS.planoGET()
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -28,7 +24,7 @@ module.exports.planoGET = function planoGET (req, res, next) {
 };
 
 module.exports.planoPOST = function planoPOST (req, res, next, body) {
-  Plano.planoPOST(body)
+  PlanoS.planoPOST(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -38,7 +34,7 @@ module.exports.planoPOST = function planoPOST (req, res, next, body) {
 };
 
 module.exports.plano_idDELETE = function plano_idDELETE (req, res, next, id) {
-  Plano.plano_idDELETE(id)
+  PlanoS.plano_idDELETE(id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -48,7 +44,7 @@ module.exports.plano_idDELETE = function plano_idDELETE (req, res, next, id) {
 };
 
 module.exports.plano_idGET = function plano_idGET (req, res, next, id) {
-  Plano.plano_idGET(id)
+  PlanoS.plano_idGET(id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -58,7 +54,7 @@ module.exports.plano_idGET = function plano_idGET (req, res, next, id) {
 };
 
 module.exports.plano_idPUT = function plano_idPUT (req, res, next, body, id) {
-  Plano.plano_idPUT(body, id)
+  PlanoS.plano_idPUT(body, id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
