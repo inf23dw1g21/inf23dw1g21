@@ -56,7 +56,38 @@ exports.dominio_idDELETE = function(id) {
     resolve();
   });
 }
-
+/**
+ *
+ * id Long 
+ * returns List
+ **/
+exports.dominio_idclienteGET = function(id) {
+  return new Promise(function(resolve, reject) {
+    var examples = {};
+    examples['application/json'] = [ {
+  "id" : 0,
+  "nome" : "Patatas",
+  "codigo_TLD" : ".net",
+  "estado" : "Ativo",
+  "data_de_inicio" : "2023-01-01",
+  "data_de_fim" : "2024-01-01",
+  "cliente" : 1
+}, {
+  "id" : 0,
+  "nome" : "Patatas",
+  "codigo_TLD" : ".net",
+  "estado" : "Ativo",
+  "data_de_inicio" : "2023-01-01",
+  "data_de_fim" : "2024-01-01",
+  "cliente" : 1
+} ];
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
+  });
+}
 
 /**
  *

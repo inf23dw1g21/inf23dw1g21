@@ -133,7 +133,7 @@ CREATE TABLE pagamento (
 );
 
 -- Inserir dados na tabela pagamentos
-INSERT INTO pagamentos VALUES
+INSERT INTO pagamento VALUES
 (1, '2023-11-30 23:59:59', 9.99, 'Cartão de crédito', '1111111111', 1),
 (2, '2023-01-01 00:00:00', 99.99, 'PayPal', '2222222222', 2),
 (3, '2023-11-30 23:59:59', 19.99, 'Cartão de crédito', '3333333333', 3),

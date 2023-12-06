@@ -13,6 +13,10 @@ module.exports.cliente_idplanoGET = function cliente_idplanoGET (req, res, next,
     });
 };
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7ffef90c3acfcba6dade763f6b3a3d1b2df55afb
 module.exports.planoGET = function planoGET (req, res, next) {
   Plano.planoGET()
     .then(function (response) {
