@@ -5,33 +5,19 @@ var mysql = require("../utils/db.js")
  *
  * returns List
  **/
-exports.dominioGET = function() {
+exports.dominioGET = function(){
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "id" : 0,
-  "nome" : "Patatas",
-  "codigo_TLD" : ".net",
-  "estado" : "Ativo",
-  "data_de_inicio" : "2023-01-01",
-  "data_de_fim" : "2024-01-01",
-  "cliente" : 1
-}, {
-  "id" : 0,
-  "nome" : "Patatas",
-  "codigo_TLD" : ".net",
-  "estado" : "Ativo",
-  "data_de_inicio" : "2023-01-01",
-  "data_de_fim" : "2024-01-01",
-  "cliente" : 1
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
+  mysql.query("SELECT * FROM dominio", function (err, res) {
+    if (err) {
+      console.log(err);
+      reject (err);
+    }
+    else {
+      console.log(res);
+      resolve(res);
     }
   });
-}
+})};
 
 
 /**
@@ -41,7 +27,16 @@ exports.dominioGET = function() {
  **/
 exports.dominioPOST = function(body) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    console.log(body);
+    mysql.query("INSERT INTO dominio (nome, codigo_TLD, estado, data_de_inicio, data_de_fim, cliente) Values(?,?,?,?,?,?)", [body.nome, body.codigo_TLD, body.estado, body.estado, body.data_de_inicio, body.data_de_fim, body.cliente], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject (err);
+      } else {
+        console.log(res.insertId);
+        resolve (res.insertId);
+      }
+    });
   });
 }
 
@@ -53,7 +48,17 @@ exports.dominioPOST = function(body) {
  **/
 exports.dominio_idDELETE = function(id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    mysql.query("DELETE FROM dominio WHERE id = ?", [id], function (err, res) {
+      if (err || !res.affectedRows) {
+        console.log(err); 
+        console.log (res);
+        reject();
+      }
+      else {
+        console.log (res);
+        resolve ({"deleted": id});
+      }
+    });
   });
 }
 /**
@@ -63,29 +68,16 @@ exports.dominio_idDELETE = function(id) {
  **/
 exports.dominio_idclienteGET = function(id) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "id" : 0,
-  "nome" : "Patatas",
-  "codigo_TLD" : ".net",
-  "estado" : "Ativo",
-  "data_de_inicio" : "2023-01-01",
-  "data_de_fim" : "2024-01-01",
-  "cliente" : 1
-}, {
-  "id" : 0,
-  "nome" : "Patatas",
-  "codigo_TLD" : ".net",
-  "estado" : "Ativo",
-  "data_de_inicio" : "2023-01-01",
-  "data_de_fim" : "2024-01-01",
-  "cliente" : 1
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    mysql.query("SELECT * FROM dominio where cliente=?",[id], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject (err);
+      }
+      else {
+        console.log(res);
+        resolve(res);
+      }
+    });
   });
 }
 
@@ -96,21 +88,16 @@ exports.dominio_idclienteGET = function(id) {
  **/
 exports.dominio_idGET = function(id) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "id" : 0,
-  "nome" : "Patatas",
-  "codigo_TLD" : ".net",
-  "estado" : "Ativo",
-  "data_de_inicio" : "2023-01-01",
-  "data_de_fim" : "2024-01-01",
-  "cliente" : 1
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    mysql.query("SELECT * FROM dominio WHERE id = ?", [id], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject (err);
+      }
+      else {
+        console.log(res);
+        resolve(res[0]);
+      }
+    });
   });
 }
 
@@ -123,34 +110,31 @@ exports.dominio_idGET = function(id) {
  **/
 exports.dominio_idPUT = function(body,id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    console.log(body);
+    mysql.query("UPDATE dominio set nome = ?, codigo_TLD = ?, estado = ?, data_de_inicio = ?, data_de_fim = ?, cliente = ?   WHERE id = ?", [body.nome, body.codigo_TLD, body.estado, body.data_de_inico, body.data_de_fim, body.cliente, id], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject (err);
+      }
+      else {
+        console.log(res);
+        resolve(id);
+      }
+    });
   });
 }
 
 exports.dominio_idclienteGET = function(id) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "id" : 0,
-  "nome" : "Patatas",
-  "codigo_TLD" : ".net",
-  "estado" : "Ativo",
-  "data_de_inicio" : "2023-01-01",
-  "data_de_fim" : "2024-01-01",
-  "cliente" : 1
-}, {
-  "id" : 0,
-  "nome" : "Patatas",
-  "codigo_TLD" : ".net",
-  "estado" : "Ativo",
-  "data_de_inicio" : "2023-01-01",
-  "data_de_fim" : "2024-01-01",
-  "cliente" : 1
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    mysql.query("SELECT * FROM dominio where cliente=?",[id], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject (err);
+      }
+      else {
+        console.log(res);
+        resolve(res);
+      }
+    });
   });
 }
