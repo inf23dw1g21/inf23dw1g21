@@ -7,25 +7,16 @@ var mysql = require("../utils/db.js")
  **/
 exports.pagamentoGET = function() {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "id" : 0,
-  "valor" : 9.99,
-  "metodo_de_pagamento" : "cartao de credito",
-  "numero_de_transacao" : "CGD54848488",
-  "cliente" : 1
-}, {
-  "id" : 0,
-  "valor" : 9.99,
-  "metodo_de_pagamento" : "cartao de credito",
-  "numero_de_transacao" : "CGD54848488",
-  "cliente" : 1
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    mysql.query("SELECT * FROM pagamento", function (err, res) {
+      if (err) {
+        console.log(err);
+        reject (err);
+      }
+      else {
+        console.log(res);
+        resolve(res);
+      }
+    });
   });
 }
 
@@ -37,7 +28,16 @@ exports.pagamentoGET = function() {
  **/
 exports.pagamentoPOST = function(body) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    console.log(body);
+    mysql.query("INSERT INTO pagamento (valor, metodo_de_pagamento, numero_de_transacao, cliente) Values(?,?,?,?)", [body.valor, body.metodo_de_pagamento, body.numero_de_transacao, body.cliente], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject (err);
+      } else {
+        console.log(res.insertId);
+        resolve (res.insertId);
+      }
+    });
   });
 }
 
@@ -49,7 +49,17 @@ exports.pagamentoPOST = function(body) {
  **/
 exports.pagamento_idDELETE = function(id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    mysql.query("DELETE FROM pagamento WHERE id = ?", [id], function (err, res) {
+      if (err || !res.affectedRows) {
+        console.log(err); 
+        console.log (res);
+        reject();
+      }
+      else {
+        console.log (res);
+        resolve ({"deleted": id});
+      }
+    });
   });
 }
 
@@ -61,19 +71,16 @@ exports.pagamento_idDELETE = function(id) {
  **/
 exports.pagamento_idGET = function(id) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "id" : 0,
-  "valor" : 9.99,
-  "metodo_de_pagamento" : "cartao de credito",
-  "numero_de_transacao" : "CGD54848488",
-  "cliente" : 1
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    mysql.query("SELECT * FROM pagamento WHERE id = ?", [id], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject (err);
+      }
+      else {
+        console.log(res);
+        resolve(res[0]);
+      }
+    });
   });
 }
 
@@ -86,7 +93,17 @@ exports.pagamento_idGET = function(id) {
  **/
 exports.pagamento_idPUT = function(body,id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    console.log(body);
+    mysql.query("UPDATE pagamento set valor = ?, metodo_de_pagamento = ?, numero_de_transacao = ?, cliente = ?   WHERE id = ?", [body.valor, body.metodo_de_pagamento, body.numero_de_transacao, body.cliente, id], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject (err);
+      }
+      else {
+        console.log(res);
+        resolve(id);
+      }
+    });
   });
 }
 
@@ -98,25 +115,16 @@ exports.pagamento_idPUT = function(body,id) {
  **/
 exports.pagamento_idclienteGET = function(id) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "id" : 0,
-  "valor" : 9.99,
-  "metodo_de_pagamento" : "cartao de credito",
-  "numero_de_transacao" : "CGD54848488",
-  "cliente" : 1
-}, {
-  "id" : 0,
-  "valor" : 9.99,
-  "metodo_de_pagamento" : "cartao de credito",
-  "numero_de_transacao" : "CGD54848488",
-  "cliente" : 1
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    mysql.query("SELECT * FROM pagamento where cliente=?",[id], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject (err);
+      }
+      else {
+        console.log(res);
+        resolve(res);
+      }
+    });
   });
 }
 
