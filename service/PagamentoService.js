@@ -7,7 +7,7 @@ var mysql = require("../utils/db.js")
  **/
 exports.pagamentoGET = function() {
   return new Promise(function(resolve, reject) {
-    mysql.query("SELECT * FROM pagamento", function (err, res) {
+    mysql.query("SELECT id , valor, metodo_de_pagamento, numero_de_transacao, cliente FROM pagamento", function (err, res) {
       if (err) {
         console.log(err);
         reject (err);

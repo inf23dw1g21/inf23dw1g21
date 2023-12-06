@@ -3,7 +3,8 @@
 var utils = require('../utils/writer.js');
 var PagamentoS = require('../service/PagamentoService');
 
-module.exports.pagamentoGET = function pagamentoGET (req, res, next) {
+module.exports.pagamento_get = function pagamento_get (req, res, next) {
+  console.log("Olá mundo !");
   PagamentoS.pagamentoGET()
     .then(function (response) {
       utils.writeJson(res, response);

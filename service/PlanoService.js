@@ -20,14 +20,7 @@ exports.cliente_idplanoGET = function(id) {
     });
   });
 }
-<<<<<<< HEAD
-=======
 
-
-
-
-
->>>>>>> 7ffef90c3acfcba6dade763f6b3a3d1b2df55afb
 /**
  *
  * returns List

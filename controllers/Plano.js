@@ -3,16 +3,6 @@
 var utils = require('../utils/writer.js');
 var PlanoS = require('../service/PlanoService');
 
-module.exports.cliente_idplanoGET = function cliente_idplanoGET (req, res, next, id) {
-  PlanoS.cliente_idplanoGET(id)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
 module.exports.planoGET = function planoGET (req, res, next) {
   PlanoS.planoGET()
     .then(function (response) {
@@ -55,6 +45,16 @@ module.exports.plano_idGET = function plano_idGET (req, res, next, id) {
 
 module.exports.plano_idPUT = function plano_idPUT (req, res, next, body, id) {
   PlanoS.plano_idPUT(body, id)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
+module.exports.cliente_idplanoGET = function cliente_idplanoGET (req, res, next, id) {
+  PlanoS.cliente_idplanoGET(id)
     .then(function (response) {
       utils.writeJson(res, response);
     })

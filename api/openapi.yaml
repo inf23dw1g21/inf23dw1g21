@@ -35,7 +35,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/cliente'
                 x-content-type: application/json
-      x-swagger-router-controller: cliente
+      x-swagger-router-controller: Cliente
     post:
       tags:
       - cliente
@@ -45,7 +45,7 @@ paths:
       responses:
         "200":
           description: Cliente criado com sucesso
-      x-swagger-router-controller: cliente
+      x-swagger-router-controller: Cliente
   /cliente/{id}:
     get:
       tags:
@@ -67,7 +67,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/cliente'
-      x-swagger-router-controller: cliente
+      x-swagger-router-controller: Cliente
     put:
       tags:
       - cliente
@@ -86,7 +86,7 @@ paths:
       responses:
         "200":
           description: Cliente atualizado com sucesso!
-      x-swagger-router-controller: cliente
+      x-swagger-router-controller: Cliente
     delete:
       tags:
       - cliente
@@ -103,7 +103,7 @@ paths:
       responses:
         "200":
           description: Cliente deletado com sucesso!
-      x-swagger-router-controller: cliente
+      x-swagger-router-controller: Cliente
   /cliente/{id}/plano:
     get:
       tags:
@@ -128,7 +128,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/plano'
                 x-content-type: application/json
-      x-swagger-router-controller: plano
+      x-swagger-router-controller: Plano
   /planos:
     get:
       tags:
@@ -144,7 +144,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/plano'
                 x-content-type: application/json
-      x-swagger-router-controller: plano
+      x-swagger-router-controller: Plano
     post:
       tags:
       - plano
@@ -154,7 +154,7 @@ paths:
       responses:
         "200":
           description: Plano criado com sucesso
-      x-swagger-router-controller: plano
+      x-swagger-router-controller: Plano
   /plano/{id}:
     get:
       tags:
@@ -176,7 +176,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/plano'
-      x-swagger-router-controller: plano
+      x-swagger-router-controller: Plano
     put:
       tags:
       - plano
@@ -195,7 +195,7 @@ paths:
       responses:
         "200":
           description: Plano atualizado com sucesso
-      x-swagger-router-controller: plano
+      x-swagger-router-controller: Plano
     delete:
       tags:
       - plano
@@ -212,7 +212,7 @@ paths:
       responses:
         "200":
           description: Plano apagado com sucesso
-      x-swagger-router-controller: plano
+      x-swagger-router-controller: Plano
   /dominios:
     get:
       tags:
@@ -228,7 +228,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/dominio'
                 x-content-type: application/json
-      x-swagger-router-controller: dominio
+      x-swagger-router-controller: Dominio
     post:
       tags:
       - dominio
@@ -238,7 +238,7 @@ paths:
       responses:
         "200":
           description: Dominio criado com sucesso
-      x-swagger-router-controller: dominio
+      x-swagger-router-controller: Dominio
   /dominio/{id}:
     get:
       tags:
@@ -260,7 +260,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/dominio'
-      x-swagger-router-controller: dominio
+      x-swagger-router-controller: Dominio
     put:
       tags:
       - dominio
@@ -279,7 +279,7 @@ paths:
       responses:
         "200":
           description: Dominio criado com sucesso
-      x-swagger-router-controller: dominio
+      x-swagger-router-controller: Dominio
     delete:
       tags:
       - dominio
@@ -296,7 +296,7 @@ paths:
       responses:
         "200":
           description: Dominio Apagado com sucesso
-      x-swagger-router-controller: dominio
+      x-swagger-router-controller: Dominio
   /dominio/{id}/cliente:
     get:
       tags:
@@ -321,12 +321,12 @@ paths:
                 items:
                   $ref: '#/components/schemas/dominio'
                 x-content-type: application/json
-      x-swagger-router-controller: dominio
-  /pagamentos:
+      x-swagger-router-controller: Dominio
+  /pagamento:
     get:
       tags:
       - pagamento
-      operationId: pagamentoGET
+      operationId: pagamento_get
       responses:
         "200":
           description: Uma lista de pagamentos
@@ -337,7 +337,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/pagamento'
                 x-content-type: application/json
-      x-swagger-router-controller: pagamento
+      x-swagger-router-controller: Pagamento
     post:
       tags:
       - pagamento
@@ -347,7 +347,7 @@ paths:
       responses:
         "200":
           description: Pagamento criado com sucesso
-      x-swagger-router-controller: pagamento
+      x-swagger-router-controller: Pagamento
   /pagamento/{id}:
     get:
       tags:
@@ -369,7 +369,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/pagamento'
-      x-swagger-router-controller: pagamento
+      x-swagger-router-controller: Pagamento
     put:
       tags:
       - pagamento
@@ -388,7 +388,7 @@ paths:
       responses:
         "200":
           description: Pagamento criado com sucesso
-      x-swagger-router-controller: pagamento
+      x-swagger-router-controller: Pagamento
     delete:
       tags:
       - pagamento
@@ -405,7 +405,7 @@ paths:
       responses:
         "200":
           description: Pagamento Apagado com sucesso
-      x-swagger-router-controller: pagamento
+      x-swagger-router-controller: Pagamento
   /pagamento/{id}/cliente:
     get:
       tags:
@@ -430,7 +430,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/pagamento'
                 x-content-type: application/json
-      x-swagger-router-controller: pagamento
+      x-swagger-router-controller: Pagamento
 components:
   schemas:
     plano:
