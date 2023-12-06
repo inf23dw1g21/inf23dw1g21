@@ -15,6 +15,7 @@ module.exports.pagamentoGET = function pagamentoGET (req, res, next) {
 
 module.exports.pagamentoPOST = function pagamentoPOST (req, res, next, body) {
   Pagamento.pagamentoPOST(body)
+    .then(Pagamento.pagamento_idGET)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -45,6 +46,7 @@ module.exports.pagamento_idGET = function pagamento_idGET (req, res, next, id) {
 
 module.exports.pagamento_idPUT = function pagamento_idPUT (req, res, next, body, id) {
   Pagamento.pagamento_idPUT(body, id)
+    .then(Pagamento.pagamento_idGET)
     .then(function (response) {
       utils.writeJson(res, response);
     })
