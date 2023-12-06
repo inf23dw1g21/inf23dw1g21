@@ -28,7 +28,7 @@ exports.clienteGET = function() {
 exports.clientePOST = function(body) {
   return new Promise(function(resolve, reject) {
     resolve();
-    mysql.query("INSERT INTO cliente (id, nome, tipo_de_conta, numero_fiscal, email, contacto, plano, periodicidade_de_pagamento, data_ultimo_pagamento) Values(?,?,?,?,?,?,?,?,?)", [body.id, body.nome, body.tipo_de_conta, body.numero_fiscal, body.email, body.contacto, body.plano, body.periodicidade_de_pagamento, body.data_ultimo_pagamento], function (err, res) {
+    mysql.query("INSERT INTO cliente (nome, tipo_de_conta, numero_fiscal, email, contacto, plano, periodicidade_de_pagamento, data_ultimo_pagamento) Values(?,?,?,?,?,?,?,?)", [body.nome, body.tipo_de_conta, body.numero_fiscal, body.email, body.contacto, body.plano, body.periodicidade_de_pagamento, body.data_ultimo_pagamento], function (err, res) {
       if (err) {
         console.log(err);
         reject (err);
@@ -93,7 +93,7 @@ exports.cliente_idGET = function(id) {
 exports.cliente_idPUT = function(body,id) {
   return new Promise(function(resolve, reject) {
     resolve();
-    mysql.query("UPDATE cliente set id = ?, nome = ?, tipo_de_conta = ?, numero_fiscal = ?, email = ?, contacto = ?, plano = ?, periodicidade_de_pagamento = ?, data_ultimo_pagamento = ?   WHERE id = ?", [body.id, body.nome, body.tipo_de_conta, body.numero_fiscal, body.email, body.contacto, body.plano, body.periodicidade_de_pagamento, body.data_ultimo_pagamento], function (err, res) {
+    mysql.query("UPDATE cliente set  nome = ?, tipo_de_conta = ?, numero_fiscal = ?, email = ?, contacto = ?, plano = ?, periodicidade_de_pagamento = ?, data_ultimo_pagamento = ?   WHERE id = ?", [body.nome, body.tipo_de_conta, body.numero_fiscal, body.email, body.contacto, body.plano, body.periodicidade_de_pagamento, body.data_ultimo_pagamento, id], function (err, res) {
       if (err) {
         console.log(err);
         reject (err);

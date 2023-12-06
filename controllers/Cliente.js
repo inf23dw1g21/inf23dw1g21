@@ -15,7 +15,7 @@ module.exports.clienteGET = function clienteGET (req, res, next) {
 
 module.exports.clientePOST = function clientePOST (req, res, next, body) {
   Cliente.clientePOST(body)
-  .then(Cliente.cliente_idGET)
+    .then(Cliente.clienteGET)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -46,7 +46,7 @@ module.exports.cliente_idGET = function cliente_idGET (req, res, next, id) {
 
 module.exports.cliente_idPUT = function cliente_idPUT (req, res, next, body, id) {
   Cliente.cliente_idPUT(body, id)
-  .then(Cliente.cliente_idGET)
+    .then(Cliente.cliente_idGET)
     .then(function (response) {
       utils.writeJson(res, response);
     })

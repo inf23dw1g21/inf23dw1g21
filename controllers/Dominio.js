@@ -13,7 +13,7 @@ module.exports.dominioGET = function dominioGET (req, res, next) {
     });
 };
 module.exports.dominio_idclienteGET = function dominio_idclienteGET (req, res, next, id) {
-  Plano.dominio_idclienteGET(id)
+  Dominio.dominio_idclienteGET(id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
