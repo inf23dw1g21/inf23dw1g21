@@ -123,18 +123,3 @@ exports.dominio_idPUT = function(body,id) {
     });
   });
 }
-
-exports.dominio_idclienteGET = function(id) {
-  return new Promise(function(resolve, reject) {
-    mysql.query("SELECT * FROM dominio where cliente=?",[id], function (err, res) {
-      if (err) {
-        console.log(err);
-        reject (err);
-      }
-      else {
-        console.log(res);
-        resolve(res);
-      }
-    });
-  });
-}

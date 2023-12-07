@@ -8,7 +8,7 @@ var mysql = require("../utils/db.js")
  **/
 exports.cliente_idplanoGET = function(id) {
   return new Promise(function(resolve, reject) {
-    mysql.query("SELECT * FROM cliente JOIN plano ON plano.id = cliente.id WHERE id = ?",[id], function (err, res) {
+    mysql.query("SELECT * FROM cliente c JOIN plano p ON c.plano = p.id WHERE c.id = ?",[id], function (err, res) {
       if (err) {
         console.log(err);
         reject (err);

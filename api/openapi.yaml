@@ -444,7 +444,7 @@ components:
         periodicidade:
           type: string
         preco:
-          type: integer
+          type: number
           format: double
         armazenamento:
           type: string
@@ -535,7 +535,7 @@ components:
           type: integer
           format: int64
         valor:
-          type: integer
+          type: number
           format: double
         metodo_de_pagamento:
           type: string

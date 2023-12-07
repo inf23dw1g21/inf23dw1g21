@@ -63,14 +63,3 @@ module.exports.dominio_idPUT = function dominio_idPUT (req, res, next, body, id)
       utils.writeJson(res, response);
     });
 };
-
-module.exports.dominio_idclienteGET = function dominio_idclienteGET (req, res, next, id) {
-  Plano.dominio_idclienteGET(id)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-

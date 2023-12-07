@@ -124,7 +124,7 @@ INSERT INTO dominio VALUES
 -- Criar a tabela pagamentos
 CREATE TABLE pagamento (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  timestamp DATETIME NOT NULL,
+  timestamp DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   valor DECIMAL(10,2) NOT NULL,
   metodo_de_pagamento VARCHAR(20) NOT NULL,
   numero_de_transacao VARCHAR(20) NOT NULL,
