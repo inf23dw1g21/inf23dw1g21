@@ -20,7 +20,7 @@ servers:
     basePath:
       default: /
 paths:
-  /clientes:
+  /cliente:
     get:
       tags:
       - cliente
@@ -129,7 +129,7 @@ paths:
                   $ref: '#/components/schemas/plano'
                 x-content-type: application/json
       x-swagger-router-controller: Plano
-  /planos:
+  /plano:
     get:
       tags:
       - plano
@@ -213,7 +213,7 @@ paths:
         "200":
           description: Plano apagado com sucesso
       x-swagger-router-controller: Plano
-  /dominios:
+  /dominio:
     get:
       tags:
       - dominio
