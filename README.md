@@ -26,6 +26,8 @@ Requirements
 Docker 
 
 1º Git clone : https://github.com/inf23dw1g21/inf23dw1g21
+
 2º Git pull
+
 3º docker compose up -d --build, you need to do this on the folder of the project
 
