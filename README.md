@@ -17,3 +17,15 @@ open http://localhost:8080/docs
 ```
 
 This project leverages the mega-awesome [swagger-tools](https://github.com/apigee-127/swagger-tools) middleware which does most all the work.
+
+To make the pull of the image for the app, you have to do: 
+
+```
+docker pull inf23dwg21/webhoster1.0:inf23dw1g21-app
+```
+
+To make the pull of the image of MySQL image, you have to do:
+
+```
+docker pull inf23dwg21/webhoster1.0:inf23dw1g21-mysql
+```
