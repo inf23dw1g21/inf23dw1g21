@@ -42,7 +42,7 @@ Docker
 
 First, create a clone of the project from github to your machine:
 ```
-https://github.com/inf23dw1g21/inf23dw1g21
+git clone: https://github.com/inf23dw1g21/inf23dw1g21
 ```
 
 Second, inside of the project folder, open the terminal / prompt / bash and do a docker compose up:
