@@ -39,10 +39,10 @@ Vasco Neves(a043335@umaia.pt).
 
 
 Requirements 
-***Git*** - (http://https://github.com/)
-***Docker*** - (https://hub.docker.com/)
+***Git*** - (http://https://git.com/)
+***Docker*** - (https://docker.com/)
 
-### **Note**
+### **Optional**
 
 > ***Docker:*** 
 
@@ -56,7 +56,7 @@ docker pull inf23dwg21/webhoster1.0:inf23dw1g21-mysql
 ```
 docker pull inf23dwg21/webhoster1.0:inf23dw1g21-app
 ```
-### **Important**
+### **Necessary**
 
 > First, create a clone of the project from github to your machine:***
 ```
