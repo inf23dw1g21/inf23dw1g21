@@ -38,9 +38,11 @@ Vasco Neves(a043335@umaia.pt).
 ### How to use and download our app
 
 
-Requirements 
->***Git*** - (http://https://git.com/)
->***Docker*** - (https://docker.com/)
+Requirements:
+
+***Git*** - (http://https://git.com/)
+
+***Docker*** - (https://docker.com/)
 
 ### **Optional**
 
