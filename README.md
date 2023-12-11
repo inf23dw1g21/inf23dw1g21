@@ -51,6 +51,7 @@ docker compose up -d --build
 ```
 ***Optional:***
 Do a docker pull of the images:
+
 Mysql:
 ```
 docker pull inf23dwg21/webhoster1.0:inf23dw1g21-mysql
