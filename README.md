@@ -39,8 +39,8 @@ Vasco Neves(a043335@umaia.pt).
 
 
 Requirements 
-***Git*** - (http://https://git.com/)
-***Docker*** - (https://docker.com/)
+>***Git*** - (http://https://git.com/)
+>***Docker*** - (https://docker.com/)
 
 ### **Optional**
 
