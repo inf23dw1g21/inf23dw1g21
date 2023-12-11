@@ -15,32 +15,34 @@ Vasco Neves(a043335@umaia.pt).
 
 ### Applications used to develop this project
 
-***Apache - (https://httpd.apache.org/)
+***Apache*** - (https://httpd.apache.org/)
 
-***Oas3 - (https://editor.swagger.io/) 
+***Oas3*** - (https://editor.swagger.io/) 
 
-***Mysql - (https://www.mysql.com/)
+***Mysql*** - (https://www.mysql.com/)
 
-***NodeJS - (https://nodejs.org/en)
+***NodeJS*** - (https://nodejs.org/en)
 
 ### Languages Used
 
-***Xml - (https://www.xml.com/)
+***Xml*** - (https://www.xml.com/)
 
-***JavaScript - (https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+***JavaScript*** - (https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-***Json - (https://www.json.org/json-en.html)
+***Json*** - (https://www.json.org/json-en.html)
 
-***OpenApi - (https://swagger.io/specification/)
+***OpenApi*** - (https://swagger.io/specification/)
 
-***Yaml - (https://yaml.org/)
+***Yaml*** - (https://yaml.org/)
 
 ### How to use and download our app
 
 
 Requirements 
+***Git*** - (http://https://github.com/)
+***Docker*** - (https://hub.docker.com/)
 
-### Optional:
+**Optional:**
 
 ***Docker:*** 
 
@@ -54,7 +56,7 @@ NodeJS APP:
 ```
 docker pull inf23dwg21/webhoster1.0:inf23dw1g21-app
 ```
-### Not Optional
+**Required:**
 
 ***First, create a clone of the project from github to your machine:***
 ```
