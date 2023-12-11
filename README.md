@@ -40,9 +40,22 @@ Vasco Neves(a043335@umaia.pt).
 Requirements 
 Docker 
 
-1º Git clone : https://github.com/inf23dw1g21/inf23dw1g21
+1º Fazer o clone deste projecto do git para a vossa máquina:
+```
+git clone: https://github.com/inf23dw1g21/inf23dw1g21
+```
 
-2º Git pull
-
-3º docker compose up -d --build, you need to do this on the folder of the project
-
+2º Dentro da pasta do projecto , abrir o terminal / prompt / bash e fazer o docker  compose up:
+```
+docker compose up -d --build
+```
+Optional : 
+Fazer o pull das imagens para os vossos docker:
+Mysql:
+```
+docker pull inf23dw1g21-mysql
+```
+NodeJS APP:
+```
+docker pull inf23dw1g21-app
+```
