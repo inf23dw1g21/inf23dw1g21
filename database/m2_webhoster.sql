@@ -4,14 +4,14 @@ USE webhoster;
 -- Criar a tabela planos
 CREATE TABLE plano (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  tipo_de_plano VARCHAR(20) NOT NULL,
-  periodicidade VARCHAR(20) NOT NULL,
-  preco DECIMAL(10,2) NOT NULL,
-  armazenamento VARCHAR(20) NOT NULL,
-  numero_de_contas_email INT NOT NULL,
-  numero_de_dominios INT NOT NULL,
-  largura_de_banda VARCHAR(20) NOT NULL,
-  fidelizacao VARCHAR(20) NOT NULL
+  tipo_de_plano VARCHAR(20),
+  periodicidade VARCHAR(20),
+  preco DECIMAL(10,2) ,
+  armazenamento VARCHAR(20) ,
+  numero_de_contas_email INT,
+  numero_de_dominios INT,
+  largura_de_banda VARCHAR(20),
+  fidelizacao VARCHAR(20)
 );
 
 -- Inserir dados na tabela planos
@@ -30,14 +30,14 @@ INSERT INTO plano VALUES
 -- Criar a tabela clientes
 CREATE TABLE cliente (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(50) NOT NULL,
-  tipo_de_conta VARCHAR(20) NOT NULL,
-  numero_fiscal VARCHAR(20) NOT NULL,
-  email VARCHAR(50) NOT NULL,
-  contacto VARCHAR(20) NOT NULL,
+  nome VARCHAR(50) ,
+  tipo_de_conta VARCHAR(20) ,
+  numero_fiscal VARCHAR(20) ,
+  email VARCHAR(50) ,
+  contacto VARCHAR(20) ,
   plano INT NOT NULL,
-  periodicidade_de_pagamento VARCHAR(20) NOT NULL,
-  data_ultimo_pagamento DATE NOT NULL,
+  periodicidade_de_pagamento VARCHAR(20) ,
+  data_ultimo_pagamento DATE NOT ,
   FOREIGN KEY (plano) REFERENCES plano(id)
 );
 
@@ -79,10 +79,10 @@ INSERT INTO cliente VALUES
 -- Criar a tabela dominios
 CREATE TABLE dominio (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(50) NOT NULL,
-  codigo_TLD VARCHAR(10) NOT NULL,
-  estado VARCHAR(20) NOT NULL,
-  data_de_inicio DATE NOT NULL,
+  nome VARCHAR(50),
+  codigo_TLD VARCHAR(10) ,
+  estado VARCHAR(20) ,
+  data_de_inicio DATE,
   data_de_fim DATE,
   cliente INT NOT NULL,
   FOREIGN KEY (cliente) REFERENCES cliente(id)
@@ -125,9 +125,9 @@ INSERT INTO dominio VALUES
 CREATE TABLE pagamento (
   id INT PRIMARY KEY AUTO_INCREMENT,
   timestamp DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  valor DECIMAL(10,2) NOT NULL,
-  metodo_de_pagamento VARCHAR(20) NOT NULL,
-  numero_de_transacao VARCHAR(20) NOT NULL,
+  valor DECIMAL(10,2) ,
+  metodo_de_pagamento VARCHAR(20),
+  numero_de_transacao VARCHAR(20),
   cliente INT NOT NULL,
   FOREIGN KEY (cliente) REFERENCES cliente(id)
 );
