@@ -53,9 +53,9 @@ Optional :
 Fazer o pull das imagens para os vossos docker:
 Mysql:
 ```
-docker pull inf23dw1g21/webhoster1.0:inf23dw1g21-mysql
+docker pull inf23dwg21/webhoster1.0:inf23dw1g21-mysql
 ```
 NodeJS APP:
 ```
-docker pull inf23dw1g21/webhoster1.0:inf23dw1g21-app
+docker pull inf23dwg21/webhoster1.0:inf23dw1g21-app
 ```
