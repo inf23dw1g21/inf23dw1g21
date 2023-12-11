@@ -6,8 +6,8 @@ CREATE TABLE plano (
   id INT PRIMARY KEY AUTO_INCREMENT,
   tipo_de_plano VARCHAR(20),
   periodicidade VARCHAR(20),
-  preco DECIMAL(10,2) ,
-  armazenamento VARCHAR(20) ,
+  preco DECIMAL(10,2),
+  armazenamento VARCHAR(20),
   numero_de_contas_email INT,
   numero_de_dominios INT,
   largura_de_banda VARCHAR(20),
@@ -30,14 +30,14 @@ INSERT INTO plano VALUES
 -- Criar a tabela clientes
 CREATE TABLE cliente (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(50) ,
-  tipo_de_conta VARCHAR(20) ,
-  numero_fiscal VARCHAR(20) ,
-  email VARCHAR(50) ,
-  contacto VARCHAR(20) ,
+  nome VARCHAR(50),
+  tipo_de_conta VARCHAR(20),
+  numero_fiscal VARCHAR(20),
+  email VARCHAR(50),
+  contacto VARCHAR(20),
   plano INT NOT NULL,
   periodicidade_de_pagamento VARCHAR(20) ,
-  data_ultimo_pagamento DATE NOT ,
+  data_ultimo_pagamento DATE,
   FOREIGN KEY (plano) REFERENCES plano(id)
 );
 
@@ -80,8 +80,8 @@ INSERT INTO cliente VALUES
 CREATE TABLE dominio (
   id INT PRIMARY KEY AUTO_INCREMENT,
   nome VARCHAR(50),
-  codigo_TLD VARCHAR(10) ,
-  estado BOOLEAN ,
+  codigo_TLD VARCHAR(10),
+  estado BOOLEAN,
   data_de_inicio DATE,
   data_de_fim DATE,
   cliente INT NOT NULL,
@@ -125,7 +125,7 @@ INSERT INTO dominio VALUES
 CREATE TABLE pagamento (
   id INT PRIMARY KEY AUTO_INCREMENT,
   timestamp DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  valor DECIMAL(10,2) ,
+  valor DECIMAL(10,2),
   metodo_de_pagamento VARCHAR(20),
   numero_de_transacao VARCHAR(20),
   cliente INT NOT NULL,
