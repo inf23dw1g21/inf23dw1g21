@@ -41,6 +41,7 @@ Vasco Neves(a043335@umaia.pt).
 Requirements 
 
 ***Optional:***
+***Docker:*** 
 Do a docker pull of the images:
 
 Mysql:
@@ -51,8 +52,6 @@ NodeJS APP:
 ```
 docker pull inf23dwg21/webhoster1.0:inf23dw1g21-app
 ```
-
-***Docker:*** 
 
 First, create a clone of the project from github to your machine:
 ```
