@@ -60,12 +60,12 @@ docker pull inf23dwg21/webhoster1.0:inf23dw1g21-app
 ```
 ### **Necessary**
 
-> First, create a clone of the project from github to your machine:***
+> First, create a clone of the project from github to your machine:
 ```
 git clone: https://github.com/inf23dw1g21/inf23dw1g21
 ```
 
-> Second, inside of the project folder, open the terminal / prompt / bash and do a docker compose up:***
+> Second, inside of the project folder, open the terminal / prompt / bash and do a docker compose up:
 ```
 docker compose up -d --build
 ```
