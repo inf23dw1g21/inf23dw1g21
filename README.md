@@ -41,6 +41,7 @@ Vasco Neves(a043335@umaia.pt).
 Requirements 
 
 ***Optional:***
+
 ***Docker:*** 
 Do a docker pull of the images:
 
