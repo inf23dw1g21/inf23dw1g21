@@ -114,7 +114,7 @@ exports.plano_idGET = function(id) {
 exports.plano_idPUT = function(body,id) {
   return new Promise(function(resolve, reject) {
     console.log(body);
-    mysql.query("UPDATE plano set tipo_de_plano = ?, periodicidade = ?, preco = ?, armazenamento = ?, numero_de_contas_email = ?, numero_de_dominios = ?, largura_de_banda = ?, fidelizacao = ? where id= ?", [body.tipo_de_plano, body.periodicidade, body.preco, body.armazenamento, body.numero_de_contas_email, body.numero_de_dominios, body.largura_de_banda, body.fidelizacao, id], function (err, res) {
+    mysql.query("UPDATE plano set tipo_de_plano = COALESCE( ?, tipo_de_plano), periodicidade = COALESCE( ?, periodicidade), preco = COALESCE( ?, preco), armazenamento = COALESCE( ?, armazenamento), numero_de_contas_email = COALESCE( ?, numero_de_contas_email), numero_de_dominios = COALESCE( ?, numero_de_dominios), largura_de_banda = COALESCE( ?, largura_de_banda), fidelizacao = COALESCE( ?, fidelizacao) where id= ?", [body.tipo_de_plano, body.periodicidade, body.preco, body.armazenamento, body.numero_de_contas_email, body.numero_de_dominios, body.largura_de_banda, body.fidelizacao, id], function (err, res) {
       if (err) {
         console.log(err);
         reject (err);
