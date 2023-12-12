@@ -93,7 +93,7 @@ exports.cliente_idGET = function(id) {
 exports.cliente_idPUT = function(body,id) {
   return new Promise(function(resolve, reject) {
     resolve();
-    mysql.query("UPDATE cliente set  nome = ?, tipo_de_conta = ?, numero_fiscal = ?, email = ?, contacto = ?, plano = ?, periodicidade_de_pagamento = ?, data_ultimo_pagamento = ?   WHERE id = ?", [body.nome, body.tipo_de_conta, body.numero_fiscal, body.email, body.contacto, body.plano, body.periodicidade_de_pagamento, body.data_ultimo_pagamento, id], function (err, res) {
+    mysql.query("UPDATE cliente set  nome = COALESCE( ?, nome), tipo_de_conta = COALESCE( ?, tipo_de_conta), numero_fiscal = COALESCE( ?, numero_fiscal), email = COALESCE( ?, email), contacto = COALESCE( ?, contacto), plano = COALESCE( ?, plano), periodicidade_de_pagamento = COALESCE( ?, periodicidade_de_pagamento), data_ultimo_pagamento = COALESCE( ?, data_ultimo_pagamento)   WHERE id = ?", [body.nome, body.tipo_de_conta, body.numero_fiscal, body.email, body.contacto, body.plano, body.periodicidade_de_pagamento, body.data_ultimo_pagamento, id], function (err, res) {
       if (err) {
         console.log(err);
         reject (err);
