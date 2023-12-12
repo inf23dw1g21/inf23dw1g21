@@ -111,7 +111,7 @@ exports.dominio_idGET = function(id) {
 exports.dominio_idPUT = function(body,id) {
   return new Promise(function(resolve, reject) {
     console.log(body);
-    mysql.query("UPDATE dominio set nome = ?, codigo_TLD = ?, estado = ?, data_de_inicio = ?, data_de_fim = ?, cliente = ?   WHERE id = ?", [body.nome, body.codigo_TLD, body.estado, body.data_de_inico, body.data_de_fim, body.cliente, id], function (err, res) {
+    mysql.query("UPDATE dominio set nome = COALESCE( ?, nome), codigo_TLD = COALESCE( ?, codigo_TLD), estado = COALESCE( ?, estado), data_de_inicio = COALESCE( ?, data_de_inicio), data_de_fim = COALESCE( ?, data_de_fim), cliente = COALESCE( ?, cliente)   WHERE id = ?", [body.nome, body.codigo_TLD, body.estado, body.data_de_inico, body.data_de_fim, body.cliente, id], function (err, res) {
       if (err) {
         console.log(err);
         reject (err);
