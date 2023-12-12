@@ -94,7 +94,7 @@ exports.pagamento_idGET = function(id) {
 exports.pagamento_idPUT = function(body,id) {
   return new Promise(function(resolve, reject) {
     console.log(body);
-    mysql.query("UPDATE pagamento set valor = ?, metodo_de_pagamento = ?, numero_de_transacao = ?, cliente = ?   WHERE id = ?", [body.valor, body.metodo_de_pagamento, body.numero_de_transacao, body.cliente, id], function (err, res) {
+    mysql.query("UPDATE pagamento set valor = COALESCE( ?, valor), metodo_de_pagamento = COALESCE( ?, metodo_de_pagamento), numero_de_transacao = COALESCE( ?, numero_de_transacao), cliente = COALESCE( ?, cliente)   WHERE id = ?", [body.valor, body.metodo_de_pagamento, body.numero_de_transacao, body.cliente, id], function (err, res) {
       if (err) {
         console.log(err);
         reject (err);
