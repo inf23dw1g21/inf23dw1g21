@@ -497,7 +497,7 @@ components:
         tipo_de_conta: Empresarial
         numero_fiscal: PT000000001
         email: exemplo@umaia.pt
-        contacto: 956656564
+        contacto: PT9256656564
         plano: 1
         periodicidade_de_pagamento: Mensal
         data_ultimo_pagamento: 2023-11-30
@@ -524,7 +524,7 @@ components:
         id: 0
         nome: Patatas
         codigo_TLD: .net
-        estado: Ativo
+        estado: true
         data_de_inicio: 2023-01-01
         data_de_fim: 2024-01-01
         cliente: 1
